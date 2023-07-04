@@ -19,6 +19,11 @@ import Post from "./models/Post.js";
 import {users,posts} from "./data/index.js";
 // CONFIGURATIONS
 
+
+process.on('uncaughtException', function (err) {
+  console.log(err);
+});
+
 const __filename=fileURLToPath(import.meta.url);
 const __dirname=path.dirname(__filename);
 dotenv.config();
@@ -56,6 +61,10 @@ const upload= multer({storage});
   app.use("/users",userRoutes)
   
   app.use("/posts",postRoutes);
+  
+  app.get("/",()=>{
+    console.log("working");
+  })
 
 
 
@@ -67,7 +76,7 @@ mongoose.connect(process.env.MONGO_URL,{
  useNewUrlParser:true,
  useUnifiedTopology: true,
 }).then(()=>{
-    console.log(`Server Port ${PORT}`);
+  app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
     // User.insertMany(users);
     // Post.insertMany(posts);
 })
