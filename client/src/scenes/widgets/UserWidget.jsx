@@ -5,14 +5,13 @@ import {
   WorkOutlineOutlined,
 } from "@mui/icons-material";
 import {Box,Typography,Divider, useTheme} from "@mui/material";
-import userImage from "components/UserImage";
+import UserImage from "components/UserImage";
 import FlexBetween from "components/FlexBetween";
 import WidgetWrapper from "components/WidgetWrapper";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import {useNavigate} from "react-router-dom";
 import { Edit } from "@mui/icons-material";
-
 const UserWidget=({userId,picturePath})=>{
     const [user,setUser]=useState(null);
     const {palette} = useTheme();
@@ -21,14 +20,12 @@ const UserWidget=({userId,picturePath})=>{
     const dark= palette.neutral.dark;
     const medium=palette.neutral.medium;
     const main=palette.neutral.main;
-     console.log(token);
     const getUser= async()=>{
          try{const response= await fetch(`http://localhost:3001/users/${userId}`,{
            method:"GET",
            headers: {Authorization:`Bearer ${token}`}
 
          });
-         console.log(response);
           const data= await response.json();
           setUser(data);}
           catch(error){
@@ -59,7 +56,7 @@ const UserWidget=({userId,picturePath})=>{
             onClick={()=>navigate(`/profile/${userId}`)}
             >
               <FlexBetween gap="1rem">
-                <userImage image={picturePath}/>
+                <UserImage image={picturePath}/>
                 <Box>
                     <Typography variant="h4"
                      color={dark}
@@ -90,7 +87,7 @@ const UserWidget=({userId,picturePath})=>{
                     <Typography color={medium}>{occupation}</Typography>
                 </Box>
               </Box>
-
+                <Divider/>
               {/*THIRD ROW */}
               <Box p="1rem 0">
                 <FlexBetween mb="0.5rem">

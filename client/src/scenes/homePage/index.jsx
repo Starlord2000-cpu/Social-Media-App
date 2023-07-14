@@ -3,9 +3,8 @@ import Navbar from "scenes/navbar";
 import UserWidget from "scenes/widgets/UserWidget";
 import {useSelector} from "react-redux";
 const HomePage = ()=>{
-     const isNonMobileScreens = useMediaQuery("(min-wdith:1000px)");
-     const {_id, picturePath}=useSelector((state)=>state.user);
-     console.log(_id);
+    const isNonMobileScreens = useMediaQuery("(min-wdith:1000px)");
+        const {_id, picturePath}=useSelector((state)=>state.user);
     return (<Box>
         <Navbar/>
         <Box
