@@ -65,7 +65,6 @@ console.log(PageType);
         const formData = new FormData();
         for(let value in values)
         {formData.append(value,values[value]);
-          console.log(value);
         }
          formData.append("picturePath",values.picture.name);
       //    for (var pair of formData.entries()) {

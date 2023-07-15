@@ -21,13 +21,15 @@ const UserWidget=({userId,picturePath})=>{
     const medium=palette.neutral.medium;
     const main=palette.neutral.main;
     const getUser= async()=>{
-         try{const response= await fetch(`http://localhost:3001/users/${userId}`,{
+         try{
+           const response= await fetch(`http://localhost:3001/users/${userId}`,{
            method:"GET",
            headers: {Authorization:`Bearer ${token}`}
 
          });
           const data= await response.json();
-          setUser(data);}
+          setUser(data);
+         }
           catch(error){
             console.log(error);
           }
@@ -79,11 +81,11 @@ const UserWidget=({userId,picturePath})=>{
               {/*SECOND ROW */}
               <Box p="1rem 0">
                 <Box display="flex" alignItems="center" gap="1rem" mb="0.5rem">
-                    <LocationOnOutlined fontsize="large" sx={{color:main}}/>
+                    <LocationOnOutlined fontSize="large" sx={{color:main}}/>
                     <Typography color={medium}>{location}</Typography>
                 </Box>
                 <Box display="flex" alignItems="center" gap="1rem">
-                    <WorkOutlineOutlined fontsize="large" sx={{color:main}}/>
+                    <WorkOutlineOutlined fontSize="large" sx={{color:main}}/>
                     <Typography color={medium}>{occupation}</Typography>
                 </Box>
               </Box>
@@ -103,9 +105,10 @@ const UserWidget=({userId,picturePath})=>{
                     </Typography>
                 </FlexBetween>
               </Box>
+              <Divider/>
               {/*FOURTH ROW */}
               <Box p="1rem 0">
-                <Typography fontsize="1rem" color={main} fontWeight="500" mb="1rem">
+                <Typography fontSize="1rem" color={main} fontWeight="500" mb="1rem">
                     Social Profiles
                 </Typography>
                 <FlexBetween gap="1rem" mb="0.5rem">
