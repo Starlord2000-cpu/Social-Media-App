@@ -5,7 +5,7 @@ import PostWidget from "./PostWidget";
 
 const PostsWidget=({userId, isProfile=false})=>{
 
-     const dispatch = useDisptach();
+     const dispatch = useDispatch();
      const posts = useSelector((state)=>state.posts);
      const token   = useSelector((state)=>state.token);
      
@@ -41,6 +41,7 @@ const PostsWidget=({userId, isProfile=false})=>{
             _id,
             userId,
             firstName,
+            lastName,
             description,
             location,
             picturePath,
